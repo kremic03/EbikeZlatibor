@@ -29,13 +29,13 @@ export default function Landing() {
     <div className="w-full">
       <Navbar />
       <Hero />
+      <Suspense fallback={<div className="py-24 bg-cream" aria-hidden />}>
+        <QRLandingSection />
+      </Suspense>
       <Bikes />
       <Tours />
       <About />
       <Testimonials />
-      <Suspense fallback={<div className="py-24 bg-cream" aria-hidden />}>
-        <QRLandingSection />
-      </Suspense>
       <Contact />
       <Footer />
     </div>

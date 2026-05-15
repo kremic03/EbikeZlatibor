@@ -122,7 +122,7 @@ export default function QRLandingSection() {
             <span className="w-7 h-px bg-ember" />
           </p>
           <h2 className="font-display font-black text-4xl lg:text-5xl tracking-tight leading-tight mb-4">
-            📲 Skeniraj QR i otvori<br />rutu na telefonu
+            Skeniraj QR i otvori<br />rutu na telefonu
           </h2>
           <p className="text-gray-500 text-lg max-w-xl mx-auto leading-relaxed">
             Uperi kameru telefona u QR kod ispod — mapa rute, GPS i sve tačke interesovanja otvaraju se za par sekundi.

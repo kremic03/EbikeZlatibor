@@ -2,7 +2,7 @@ import { useParams, Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import {
   ArrowLeft, MapPin, Clock, TrendingUp, Mountain,
-  AlertCircle, Navigation, Share2, Zap,
+  AlertCircle, Navigation, Share2, Zap, Check,
 } from 'lucide-react'
 import RouteMap from '../components/route/RouteMap'
 import ElevationChart from '../components/route/ElevationChart'
@@ -144,7 +144,7 @@ export default function RoutePage() {
             <ul className="space-y-2.5">
               {route.tips.map((tip, i) => (
                 <li key={i} className="flex gap-3 text-white/80 text-[15px] leading-relaxed">
-                  <span className="text-ember font-black shrink-0">✓</span>
+                  <Check size={18} className="text-ember shrink-0 mt-0.5" strokeWidth={3} />
                   {tip}
                 </li>
               ))}
