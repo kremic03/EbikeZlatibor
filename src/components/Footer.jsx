@@ -1,6 +1,6 @@
 const LINKS = {
   'Ture': ['Jutarnja tura', 'Celodnevna tura', 'Večernja tura', 'Privatna tura'],
-  'Informacije': ['O nama', 'Galerija', 'Utisci gostiju', 'Zašto ZlatiBike?'],
+  'Informacije': ['O nama', 'Utisci gostiju'],
   'Kontakt': ['+381 64 123 4567', 'info@zlatibike.rs', 'Zlatibor, Srbija', '07:00 – 20:00'],
 }
 

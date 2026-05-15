@@ -5,7 +5,6 @@ import { Menu, X, Zap, Map } from 'lucide-react'
 const NAV_LINKS = [
   { href: '#bikes',        label: 'Bicikli' },
   { href: '#tours',        label: 'Ture' },
-  { href: '#gallery',      label: 'Galerija' },
   { href: '#about',        label: 'O nama' },
   { href: '#testimonials', label: 'Utisci' },
 ]
