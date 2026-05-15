@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
-import { Clock, MapPin, Users } from 'lucide-react'
+import { Link } from 'react-router-dom'
+import { Clock, MapPin, Users, Map, ArrowRight } from 'lucide-react'
 
 const TOURS = [
   {
@@ -8,6 +9,7 @@ const TOURS = [
     img: 'https://images.unsplash.com/photo-1593764592116-bfb2a97c642a?w=700&q=85',
     desc: 'Krenite u osvit kroz borove šume do vrha Tornika. Neverovatni pogledi koji oduzimaju dah čekaju vas.',
     duration: '3–4 sata', distance: '22 km', group: 'Maks. 8 osoba', price: '2.400',
+    routeSlug: 'tornik-vidikovac',
   },
   {
     id: 2, type: 'Celodnevna', difficulty: 'Srednja', diffClass: 'bg-amber-500',
@@ -15,6 +17,7 @@ const TOURS = [
     img: 'https://images.unsplash.com/photo-1541625602330-2277a4c46182?w=700&q=85',
     desc: 'Celodnevna avantura kroz netaknutu prirodu – od Ribničkog jezera do skrivenih šumskih staza.',
     duration: '7–8 sati', distance: '48 km', group: 'Uključen ručak', price: '4.800',
+    routeSlug: 'ribnicko-jezero',
   },
   {
     id: 3, type: 'Večernja', difficulty: 'Lagana', diffClass: 'bg-green-500',
@@ -22,6 +25,7 @@ const TOURS = [
     img: 'https://images.unsplash.com/photo-1571068316344-75bc76f77890?w=700&q=85',
     desc: 'Magični zalazak sunca sa platoa Zlatibora. Fotografska tura sa degustacijom lokalnih proizvoda.',
     duration: '2–3 sata', distance: '14 km', group: 'Foto-pauze', price: '1.900',
+    routeSlug: 'cigota-panorama',
   },
   {
     id: 4, type: 'Privatna', difficulty: 'Po želji', diffClass: 'bg-ember',
@@ -29,6 +33,7 @@ const TOURS = [
     img: 'https://images.unsplash.com/photo-1532298229144-0ec0c57515c7?w=700&q=85',
     desc: 'Kompletno personalizovana tura kreirana isključivo za vas. Vaše tempo, vaša ruta, vaše uspomene.',
     duration: 'Po dogovoru', distance: 'Ruta po želji', group: 'VIP usluga', price: 'Na upit',
+    routeSlug: null,
   },
 ]
 
@@ -89,6 +94,17 @@ function TourCard({ tour, delay }) {
             Prijavi se
           </button>
         </div>
+
+        {tour.routeSlug && (
+          <Link
+            to={`/ruta/${tour.routeSlug}`}
+            className="mt-3 flex items-center justify-center gap-2 text-ember hover:text-white text-xs font-bold uppercase tracking-wider py-2 transition-colors group/link"
+          >
+            <Map size={12} />
+            Vidi rutu na mapi
+            <ArrowRight size={12} className="group-hover/link:translate-x-0.5 transition-transform" />
+          </Link>
+        )}
       </div>
     </motion.article>
   )
@@ -125,6 +141,34 @@ export default function Tours() {
             <TourCard key={tour.id} tour={tour} delay={i * 0.08} />
           ))}
         </div>
+
+        {/* Self-guided CTA */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.6 }}
+          className="mt-14 bg-gradient-to-r from-ember to-ember-dark rounded-3xl p-8 lg:p-10 flex flex-col lg:flex-row items-center gap-6 shadow-2xl shadow-ember/30"
+        >
+          <div className="w-16 h-16 shrink-0 bg-white/20 backdrop-blur-md rounded-2xl flex items-center justify-center">
+            <Map size={28} className="text-white" />
+          </div>
+          <div className="flex-1 text-center lg:text-left">
+            <h3 className="font-display font-black text-white text-2xl lg:text-3xl tracking-tight mb-2">
+              Više volite samostalno?
+            </h3>
+            <p className="text-white/85 leading-relaxed">
+              Iznajmite bicikl i istražite Zlatibor sopstvenim tempom — skenirajte QR kod na biciklu ili otvorite rute direktno.
+            </p>
+          </div>
+          <Link
+            to="/rute"
+            className="flex items-center gap-2 bg-white text-ember-dark font-black px-7 py-4 rounded-full hover:scale-105 transition-transform shadow-xl whitespace-nowrap"
+          >
+            Pogledaj rute
+            <ArrowRight size={16} />
+          </Link>
+        </motion.div>
       </div>
     </section>
   )

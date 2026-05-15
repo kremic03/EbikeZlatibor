@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
-import { Menu, X, Zap } from 'lucide-react'
+import { Link } from 'react-router-dom'
+import { Menu, X, Zap, Map } from 'lucide-react'
 
 const NAV_LINKS = [
   { href: '#bikes',        label: 'Bicikli' },
@@ -50,6 +51,13 @@ export default function Navbar() {
                 {label}
               </a>
             ))}
+            <Link
+              to="/rute"
+              className="flex items-center gap-1.5 text-white/70 hover:text-white text-sm font-medium transition-colors"
+            >
+              <Map size={14} />
+              Rute
+            </Link>
             <a
               href="#contact"
               className="bg-ember hover:bg-ember-dark text-white text-sm font-bold px-5 py-2.5 rounded-full transition-all hover:-translate-y-0.5 shadow-lg shadow-ember/30"
@@ -81,7 +89,7 @@ export default function Navbar() {
         >
           <X size={20} />
         </button>
-        {[...NAV_LINKS, { href: '#contact', label: 'Rezerviši' }].map(({ href, label }) => (
+        {NAV_LINKS.map(({ href, label }) => (
           <a
             key={href}
             href={href}
@@ -91,6 +99,21 @@ export default function Navbar() {
             {label}
           </a>
         ))}
+        <Link
+          to="/rute"
+          onClick={() => setMobileOpen(false)}
+          className="text-3xl font-black text-white hover:text-ember transition-colors flex items-center gap-2"
+        >
+          <Map size={26} />
+          Rute
+        </Link>
+        <a
+          href="#contact"
+          onClick={() => setMobileOpen(false)}
+          className="text-3xl font-black text-white hover:text-ember transition-colors"
+        >
+          Rezerviši
+        </a>
       </div>
     </>
   )
